@@ -35,7 +35,7 @@ with open("sample.txt", 'r') as n:
     cur = 50
     
     for i in instructions:
-        print(f"{i} makes {cur} become {click(cur, i[0], i[1])}")
+
         cur = click(cur, i[0], i[1])
         if(cur == 0):
             zeroCount += 1
