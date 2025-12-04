@@ -26,7 +26,7 @@ function check(g, x, y){
 
     }
 
-    //console.log(g.get(y + 1) + " at " + (y+1) + " which is also less than " + maxY);
+
 
     if(g.get(y + 1) && g.get(y + 1)[x] == '@'){
 
