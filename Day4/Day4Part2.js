@@ -5,7 +5,7 @@ function check(g, x, y){
     let count = 0;
 
     const maxX = (g.get(0)).length - 1;
-    const maxY = (Array.from(g.keys())).length;
+
 
 
     if(g.get(y - 1) && g.get(y - 1)[x] == '@'){
@@ -26,7 +26,7 @@ function check(g, x, y){
 
     }
 
-    //console.log(g.get(y + 1) + " at " + (y+1) + " which is also less than " + maxY);
+
 
     if(g.get(y + 1) && g.get(y + 1)[x] == '@'){
 
