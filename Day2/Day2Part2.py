@@ -32,7 +32,7 @@ def check(s, e):
     
  
     
-with open("input.txt", 'r') as n:
+with open("Day2/input.txt", 'r') as n:
     nList = [line.rstrip() for line in n]
     
 

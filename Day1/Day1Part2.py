@@ -31,7 +31,7 @@ def extraction(this):
 
 
 
-with open("sample.txt", 'r') as n:
+with open("Day1/input.txt", 'r') as n:
     nList = [line.rstrip() for line in n]
     
     instructions = []

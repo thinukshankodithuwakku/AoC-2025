@@ -67,16 +67,7 @@ function check(g, x, y){
 
 }
 
-function reconstruct(g, x, y, filler){
 
-    const row = g.get(y);
-    row[x] = filler;
-
-    g.set(y, row);
-
-    return g;
-
-}
 
 const fs = require("fs");
 
