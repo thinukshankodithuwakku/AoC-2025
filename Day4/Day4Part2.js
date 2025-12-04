@@ -5,7 +5,7 @@ function check(g, x, y){
     let count = 0;
 
     const maxX = (g.get(0)).length - 1;
-    const maxY = (Array.from(g.keys())).length;
+
 
 
     if(g.get(y - 1) && g.get(y - 1)[x] == '@'){
