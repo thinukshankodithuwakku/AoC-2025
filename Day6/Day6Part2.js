@@ -65,7 +65,7 @@ for(let i = 0; i < digits.length; i++){
 
     if(line[0] !== ''){
 
-        builder.push(Number(line[0]));
+        builder.push(parseInt(line[0]));
 
     }
     else{
