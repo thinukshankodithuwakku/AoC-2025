@@ -1,5 +1,3 @@
-let split_count = 0;
-
 
 class Beam {
 
@@ -24,7 +22,7 @@ class Beam {
 
         while(map.get(y) && map.get(y)[x] != '^' && y < y_axis.length){
             
-            if(map.get(y)[x] == '|') newBeam = false;
+
 
             const row = [...map.get(y)];
             row[x] = '|';
@@ -34,12 +32,10 @@ class Beam {
 
         }
 
-        if(map.get(y) && map.get(y)[x] == '|') newBeam = false;
+
 
         if(map.get(y) && map.get(y)[x-1] != '|'){ 
             
-
-            if(newBeam)split_count++;
             this.MK_Beam(map, x-1, y);
         
         }
@@ -47,8 +43,6 @@ class Beam {
 
         if(map.get(y) && map.get(y)[x+1] != '|'){ 
             
-
-            if(newBeam)split_count++;
             this.MK_Beam(map, x+1, y);
         
         }
