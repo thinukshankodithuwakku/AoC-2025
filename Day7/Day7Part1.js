@@ -128,6 +128,6 @@ for(let x = 0; x < grid.get(0).length; x++){
 }
 
 const output = new Beam(grid, start_x, 1);
-
+output.STRT_Beam();
 
 output.count_splits();
