@@ -37,7 +37,7 @@ class Beam {
         if(map.get(y) && map.get(y)[x-1] != '|'){ 
             
 
-
+            if(newBeam)split_count++;
             this.MK_Beam(map, x-1, y);
         
         }
@@ -46,7 +46,7 @@ class Beam {
         if(map.get(y) && map.get(y)[x+1] != '|'){ 
             
 
-
+            if(newBeam)split_count++;
             this.MK_Beam(map, x+1, y);
         
         }
@@ -133,5 +133,5 @@ for(let x = 0; x < grid.get(0).length; x++){
 
 const output = new Beam(grid, start_x, 1);
 
-output.STRT_Beam();
+
 output.count_splits();
