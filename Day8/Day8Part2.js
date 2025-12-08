@@ -107,7 +107,6 @@ while(!co_ords.some(c => c.length >= f.length)){
     c++;
 }
 
-console.log(JSON.stringify(remaining));
 
 let min = Infinity;
 let min_pair = {};
