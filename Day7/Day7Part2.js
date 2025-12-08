@@ -1,4 +1,6 @@
 
+let count = 0;
+
 class Beam {
 
     constructor (grid, x, y){
@@ -32,12 +34,12 @@ class Beam {
 
         }
 
-
+        count+=2;
 
         if(map.get(y) && map.get(y)[x-1] != '|'){ 
             
 
-
+            
             this.MK_Beam(map, x-1, y);
         
         }
@@ -46,7 +48,7 @@ class Beam {
         if(map.get(y) && map.get(y)[x+1] != '|'){ 
             
 
-
+            
             this.MK_Beam(map, x+1, y);
         
         }
@@ -63,38 +65,69 @@ class Beam {
 
         const rows = Array.from(this.grid.keys());
 
+
         for(const row of rows){
 
-            console.log(this.grid.get(row));
+            console.log(this.grid.get(row), row);
 
         }
 
     }
 
-    count_splits(){
+    trace(x, y){
 
-        let split_count = 0;
-        const rows = Array.from(this.grid.keys());
+        let parent_count = 0;
 
-        for(let y = 0; y < rows.length; y++){
+        for(let yp = y; yp >= 0; yp--){
 
-            for(let x = 0; x < this.grid.get(y).length; x++){
+            if(this.grid.get(yp) && this.grid.get(yp)[x-1] && this.grid.get(yp)[x-1] == '^'){
 
-                if(this.grid.get(y)[x] == '^'){
+                parent_count++
 
-                    if(this.grid.get(y-1)[x] == '|'){
+            }
 
-                        split_count++;
+            if(this.grid.get(yp) && this.grid.get(yp)[x+1] && this.grid.get(yp)[x+1] == '^'){
 
-                    }
+                parent_count++
 
-                }
+            }
+
+            if(this.grid.get(yp) && this.grid.get(yp)[x] && this.grid.get(yp)[x] == 'S'){
+
+                return parent_count;
 
             }
 
         }
 
-        console.log(split_count);
+        return parent_count;
+
+    }
+
+    trace_all(){
+
+        let c = 0;
+        const y_l = Array.from(this.grid.keys()).length - 1;
+
+
+        for(let y = y_l; y >= 0; y--){
+
+            
+
+            for(let x = 0; x < this.grid.get(y_l).length; x++){
+
+                if(this.grid.get(y) && this.grid.get(y)[x] && this.grid.get(y)[x] == '|'){
+
+                    c += this.trace(x,y);
+
+                }
+
+            }
+
+
+        }
+
+        console.log(c);
 
     }
 }
@@ -118,20 +151,10 @@ for(let i = 0; i < f.length; i++){
 
 
 
-let start_x = 0;
-
-for(let x = 0; x < grid.get(0).length; x++){
-
-    if(grid.get(0)[x] == 'S'){
-
-        start_x = x;
-        break;
-
-    }
-
-}
+let start_x = grid.get(0).indexOf('S');
 
 const output = new Beam(grid, start_x, 1);
 
 output.STRT_Beam();
-output.count_splits();
+output.show_grid();
+output.trace_all();
