@@ -60,7 +60,6 @@ function find_closest(co_ords, target) {
 }
 
 const fs = require("fs");
-const { json } = require("stream/consumers");
 let f = fs.readFileSync("Day8/input.txt", "utf8").split('\n')
 
 let co_ords = [];
