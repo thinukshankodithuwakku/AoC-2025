@@ -60,9 +60,11 @@ function find_closest(co_ords, target) {
 }
 
 const fs = require("fs");
+const { json } = require("stream/consumers");
 let f = fs.readFileSync("Day8/input.txt", "utf8").split('\n')
 
 let co_ords = [];
+
 
 for(const line of f){
 
@@ -71,6 +73,8 @@ for(const line of f){
     co_ords.push([{x: raw[0], y: raw[1], z: raw[2]}]);
 
 }
+
+const copy = structuredClone(co_ords);
 
 const distances = new Set();
 
@@ -91,27 +95,39 @@ for(const p1 of co_ords){
 
 
 const iter_d = [...distances].sort((a, b) => a - b);
+let c = 0;
 
-for(let i = 0; i < 10; i++){
+let remaining = {};
 
-    co_ords = find_closest(co_ords,iter_d[i]);
+while(!co_ords.some(c => c.length >= f.length)){
+
+    remaining = co_ords.filter(c => c.length == 1)[0][0];
+
+    co_ords = find_closest(co_ords,iter_d[c]);
+    c++;
+}
+
+console.log(JSON.stringify(remaining));
+
+let min = Infinity;
+let min_pair = {};
+
+for(const co of copy){
+
+    const d = calc_distance(remaining, co[0]);
+
+    if(d != 0 && d < min){
+
+        min = d;
+        min_pair = co[0];
+
+    }
 
 }
 
-let ar_lengths = [];
 
-for(const co of co_ords){
-
-
-    ar_lengths.push(co.length);
-  
-
-
-}
-
-ar_lengths = ar_lengths.sort((a,b) => b - a);
+console.log(remaining.x * min_pair.x);
 
 
 
-console.log(ar_lengths[0] * ar_lengths[1] * ar_lengths[2])
 
