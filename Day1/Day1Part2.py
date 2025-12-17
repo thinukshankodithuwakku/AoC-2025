@@ -37,7 +37,7 @@ with open("Day1/input.txt", 'r') as n:
     instructions = []
     
     for i in nList:
-        instructions.append(extraction(i))
+        instructions.append([i[0],int(i[1:])])
     
     
     cur = 50

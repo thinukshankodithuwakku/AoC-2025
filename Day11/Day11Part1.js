@@ -7,7 +7,6 @@ function follow_path(map, start){
 
     if(paths.length == 1 && paths[0] == "out"){
 
-       //console.log(start, " goes to out")
         path_counter++;
         return "out";
 
@@ -22,7 +21,7 @@ function follow_path(map, start){
         else{
 
             for(const path of paths){
-                //console.log(start, " goes to ", path)
+
                 follow_path(map, path);
                 
             }
