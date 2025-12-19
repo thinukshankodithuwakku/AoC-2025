@@ -3,7 +3,7 @@ function calc_distance(p1, p2) {
     if(p1.x == 0 && p1.y == 0 && p1.z == 0)return 0;
     if(p2.x == 0 && p2.y == 0 && p2.z == 0)return 0;
 
-    return Math.sqrt(Math.abs(p1.x - p2.x)**2 + Math.abs(p1.y - p2.y)**2 + Math.abs(p1.z - p2.z)**2);
+    return Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2);
 
 }
 
