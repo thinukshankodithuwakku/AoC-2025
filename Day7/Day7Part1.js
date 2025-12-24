@@ -37,7 +37,6 @@ class Beam {
         if(map.get(y) && map.get(y)[x-1] != '|'){ 
             
 
-            if(newBeam)split_count++;
             this.MK_Beam(map, x-1, y);
         
         }
@@ -46,7 +45,6 @@ class Beam {
         if(map.get(y) && map.get(y)[x+1] != '|'){ 
             
 
-            if(newBeam)split_count++;
             this.MK_Beam(map, x+1, y);
         
         }
@@ -118,20 +116,9 @@ for(let i = 0; i < f.length; i++){
 
 
 
-let start_x = 0;
-
-for(let x = 0; x < grid.get(0).length; x++){
-
-    if(grid.get(0)[x] == 'S'){
-
-        start_x = x;
-        break;
-
-    }
-
-}
+let start_x = grid.get(0).indexOf('S');
 
 const output = new Beam(grid, start_x, 1);
-
+output.STRT_Beam();
 
 output.count_splits();

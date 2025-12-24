@@ -103,7 +103,7 @@ function MK_System(item){
     }
 
     return GLPK.solve(problem, {
-      msgLevel: GLPK.GLP_MSG_OFF,
+      msgLevel: 0,
     }).result.z;
 
   }
