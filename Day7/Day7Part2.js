@@ -27,34 +27,26 @@ class Beam {
 
             let lhs = 0;
             let strPos = `${x - 1}, ${y + 1}`;
-            if(this.memo.get(strPos) != 0 && this.memo.get(strPos)){ 
-
-
-                lhs = this.memo.get(strPos);
-            }
+            if(this.memo.get(strPos) != 0 && this.memo.get(strPos)) lhs = this.memo.get(strPos);
             else {
-
                 if(0 <= x - 1){
 
                     lhs = this.Count(x - 1, y + 1);
                     if(lhs != 0) this.memo.set(strPos, lhs);
 
                 }
-
             }
 
             let rhs = 0;
             strPos = `${x + 1}, ${y + 1}`;
             if(this.memo.get(strPos) != 0 && this.memo.get(strPos)) rhs = this.memo.get(strPos);
             else {
-
                 if(x + 1 < m.get(y).length){
 
                     rhs = this.Count(x + 1, y + 1);
                     if(rhs != 0) this.memo.set(strPos, rhs);
 
                 }
-
             }
 
             return lhs + rhs;
@@ -65,11 +57,7 @@ class Beam {
         }
 
     }
-
-
 }
-
-
 
 const fs = require("fs");
 let f = fs.readFileSync("Day7/input.txt", "utf8").split('\n');
@@ -77,9 +65,7 @@ let f = fs.readFileSync("Day7/input.txt", "utf8").split('\n');
 let grid = new Map();
 
 for(let i = 0; i < f.length; i++){
-
     grid.set(i, f[i]);
-
 }
 
 let start_x = grid.get(0).indexOf('S');
