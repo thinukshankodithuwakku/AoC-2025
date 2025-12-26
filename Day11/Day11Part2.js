@@ -5,6 +5,7 @@ let m = new Map();
 
 for(const line of f){
 
+    //Parsing input
     m.set(line.split(':')[0], line.split(':')[1].trim().split(' '));
 
 }
@@ -12,18 +13,13 @@ for(const line of f){
 let DacSuccessors = new Set();
 let fftSuccessors = new Set();
 
-
 function Count(startNode, endNode, graph, baseNode){
-
-    
 
     if(startNode == 'out') return 0;
 
     let paths = graph.get(startNode);
 
     if(paths && paths.includes(endNode)){
-
-        
 
         return 1;
 
@@ -35,7 +31,6 @@ function Count(startNode, endNode, graph, baseNode){
         if(paths.includes(endNode)) paths = [endNode];
 
         paths.forEach(node => {
-
 
             if(baseNode == 'svr'){
 
@@ -54,24 +49,14 @@ function Count(startNode, endNode, graph, baseNode){
             }
             else{
                 if(baseNode == 'dac') DacSuccessors.add(node);
-
-
                 total += Count(node, endNode, graph, baseNode)
-
-
             }
 
-           
-            
         });
 
         return total;
-
     }
-
-
 }
-
 
 const dacOut = Count('dac', 'out', m, 'dac');
 const fftDac = Count('fft', 'dac', m, 'fft');
