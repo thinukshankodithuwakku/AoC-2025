@@ -16,7 +16,7 @@ class Beam {
 
         const m = this.grid;
 
-        if(!(0 <= x && x < m.get(y).length))return 0; 
+        if(!(0 <= x && x < m.get(y).length)) return 0; 
         if(!(0 <= y)) return 0;
         if(y >= [...m.keys()].length) return 1;
 
