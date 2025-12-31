@@ -79,7 +79,7 @@ for(const p of co_ords){
         const area = calc_area(p,q);
 
         if(area <= biggest_area) continue;
-        if(is_valid(p,q) && area > biggest_area) biggest_area = area;
+        if(is_valid(p,q)) biggest_area = area;
 
     }
 
