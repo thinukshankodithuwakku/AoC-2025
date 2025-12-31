@@ -12,6 +12,7 @@ const maxY = Math.max(...unique_ys);
 
 const validXRanges = new Map();
 
+
 const vLines = [];
 
 

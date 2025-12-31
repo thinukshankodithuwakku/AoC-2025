@@ -6,7 +6,6 @@ class Beam {
         this.grid = grid;
         this.x = x;
         this.y = y;
-        this.timelines = 0;
         this.memo = new Map();
 
     }

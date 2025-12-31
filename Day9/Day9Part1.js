@@ -1,15 +1,8 @@
 const fs = require("fs");
-let f = fs.readFileSync("Day9/input.txt", "utf8").split('\n')
+let f = fs.readFileSync("Day9/input.txt", "utf8").split('\n');
 
-
-let co_ords = [];
-
-for(const line of f){
-
-    co_ords.push(line.split(',').map(i =>parseInt(i)));
-
-
-}
+//Parsing input
+const co_ords = f.map(line => line.split(',').map(n => parseInt(n)));
 
 function calc_area(a, b){
 
@@ -29,7 +22,7 @@ function calc_distance(a, b){
 
     if(Math.abs(a[1] - b[1]) == 0)return 0;
 
-    return Math.sqrt(Math.abs(a[0] - b[0])**2 + Math.abs(a[1] - b[1])**2);
+    return Math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2);
 }
 
 let distance_map = new Map();

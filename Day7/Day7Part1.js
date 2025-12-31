@@ -112,10 +112,6 @@ for(let i = 0; i < f.length; i++){
 
 }
 
-
-
-
-
 let start_x = grid.get(0).indexOf('S');
 
 const output = new Beam(grid, start_x, 1);
