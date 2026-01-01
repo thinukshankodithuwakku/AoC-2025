@@ -62,4 +62,4 @@ const dacOut = Count('dac', 'out', m, 'dac');
 const fftDac = Count('fft', 'dac', m, 'fft');
 const svrFft = Count('svr', 'fft', m, 'svr')
 
-console.log(dacOut * fftDac * svrFft);
+console.log(svrFft * fftDac * dacOut);
