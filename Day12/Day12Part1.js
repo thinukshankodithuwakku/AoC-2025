@@ -1,11 +1,13 @@
 const fs = require("fs");
-const present_src = fs.readFileSync("Day12/input.txt", "utf8").split('-')[0].split('\n');
-const region_src = fs.readFileSync("Day12/input.txt", "utf8").split('-')[1].trim().split('\n');
+const f = fs.readFileSync("Day12/input.txt", "utf8");
+const present_src = f.substring(0, f.indexOf('x') - 2).trim().split('\n');
+const region_src = f.substring(f.indexOf('x') - 2, f.length).trim().split('\n');
 
 const presents = [];
 let builder = [];
 
 //The parsing process for day 12 was harder than the actual puzzle itself XD
+
 
 for(const line of present_src){
 
@@ -47,6 +49,7 @@ for(const instruction of instructions){
     const new_width = Math.floor(instruction.width / 3);
     const new_height = Math.floor(instruction.height / 3);
     const new_area = new_width * new_height;
+
 
     if(new_area >= instruction.quantity.reduce((a, b) => a + b)) total++;
 
