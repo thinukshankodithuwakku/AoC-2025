@@ -102,6 +102,8 @@ function MK_System(item){
 
     }
 
+    console.log(JSON.stringify(info));
+
     return GLPK.solve(problem, {
       msgLevel: 0,
     }).result.z;

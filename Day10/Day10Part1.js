@@ -29,7 +29,7 @@ function reduce_set(target, ws, frequency){
 
 function iterate_by_base(target, ws, base){
 
-    let binary = target.split('').map(char => (char == '#') ? '1' : '0').join('');
+    let binary = target.split('').map(char => char == '#' ? '1' : '0').join('');
     let sum = Infinity;
 
 
