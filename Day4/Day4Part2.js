@@ -6,78 +6,31 @@ function check(g, x, y){
 
     const maxX = (g.get(0)).length - 1;
 
+    if(g.get(y - 1) && g.get(y - 1)[x] == '@') count++; //Above
+
+    if(0 < x && g.get(y - 1) && g.get(y - 1)[x - 1] == '@') count++; //Top-left
+
+    if(x < maxX && g.get(y - 1) && g.get(y - 1)[x + 1] == '@') count++; //Top-right
+
+    if(g.get(y + 1) && g.get(y + 1)[x] == '@') count++; //Below
+
+    if(0 < x && g.get(y + 1) && g.get(y + 1)[x - 1] == '@') count++; //Bottom-left
+
+    if(x < maxX && g.get(y + 1) && g.get(y + 1)[x + 1] == '@') count++; //Bottom-right
 
 
-    if(g.get(y - 1) && g.get(y - 1)[x] == '@'){
+    if(g.get(y) && g.get(y)[x - 1] == '@') count++; //Left
 
-        count++; //Above
-
-    }
-
-    if(0 < x && g.get(y - 1) && g.get(y - 1)[x - 1] == '@'){
-
-        count++; //Top-left
-
-    }
-
-    if(x < maxX && g.get(y - 1) && g.get(y - 1)[x + 1] == '@'){
-
-        count++; //Top-right
-
-    }
-
-
-
-    if(g.get(y + 1) && g.get(y + 1)[x] == '@'){
-
-        count++; //Below
-
-    }
-
-    if(0 < x && g.get(y + 1) && g.get(y + 1)[x - 1] == '@'){
-
-        count++; //Bottom-left
-
-    }
-
-    if(x < maxX && g.get(y + 1) && g.get(y + 1)[x + 1] == '@'){
-
-        count++; //Bottom-right
-
-    }
-
-
-    if(g.get(y) && g.get(y)[x - 1] == '@'){
-
-        count++; //Left
-
-    }
-
-    if(x < maxX){
-
-        if(g.get(y) && g.get(y)[x + 1] == '@'){
-
-            count++; //Right
-
-        }
-
-    }
+    if(x < maxX) if(g.get(y) && g.get(y)[x + 1] == '@') count++; //Right
 
     return count;
 
 }
 
-
-
 const fs = require("fs");
-
 const f = fs.readFileSync("Day4/input.txt", "utf8").split('\n');
 
-for(let i = 0; i < f.length; i++){
-
-    grid.set(i, f[i]);
-
-}
+for(let i = 0; i < f.length; i++) grid.set(i, f[i]);
 
 const y_axis = Array.from(grid.keys());
 let total = 0;
@@ -85,61 +38,30 @@ let total = 0;
 let instances = []
 
 function scan(){
-
-
     for(const y of y_axis){
 
         for(let x = 0; x < grid.get(0).length; x++){
-
-
-
 
             if(grid.get(y)[x] == '@' && check(grid, x, y) < 4){
                 instances.push([y,x]);
                 total++;
 
             } 
-
         }
-
     }
-
 }
-
-
 
 function Remaining(){
 
     let count = 0;
 
     for(const y of y_axis){
-
         for(let x = 0; x < grid.get(0).length; x++){
-
-
-
-
-            if(grid.get(y)[x] == '@' && check(grid, x, y) < 4){
-
-
-                count++;
-
-            } 
-
+            if(grid.get(y)[x] == '@' && check(grid, x, y) < 4) count++;
         }
-
     }
 
-    if(count == 0){
-
-        return false;
-
-    }
-    else{
-
-        return true;
-
-    }
+    return count > 0;
 
 }
 
@@ -152,17 +74,11 @@ function replace(){
         const row = (grid.get(y)).split("");
         row[x] = '.';
         const block = row.join("");
-
-
-
-
         grid.set(y, block);
 
     }
 
 }
-
-
 
 while(Remaining()){
 
